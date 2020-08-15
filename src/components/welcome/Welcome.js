@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import { Redirect } from "react-router-dom";
 
 import "./Welcome.css";
 
 class Welcome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false
+    };
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={"/home"} />;
+    }
+
+    const signed = response => {
+      sessionStorage.setItem("user", JSON.stringify(response));
+      this.setState({ redirect: true });
+    };
+
     const responseFacebook = response => {
       console.log(response);
+      signed(response);
     };
 
     const componentClicked = response => {
@@ -16,6 +34,7 @@ class Welcome extends Component {
 
     const responseGoogle = response => {
       console.log(response);
+      signed(response);
     };
 
     return (

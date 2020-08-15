@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Welcome from "./components/welcome/Welcome";
+import Home from "./components/home/Home";
 
 import store from "./store";
 
@@ -16,6 +17,7 @@ function App() {
           <div className="page">
             <Switch>
               <Route exact path="/" component={Welcome} />
+              <Route exact path="/home" component={Home} />
             </Switch>
           </div>
         </div>
