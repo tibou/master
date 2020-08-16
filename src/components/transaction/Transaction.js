@@ -13,6 +13,12 @@ class Transaction extends Component {
     super(props);
   }
 
+  // Cette méthode est exécutée juste après le chargement du composant
+  componentDidMount() {
+    // On déclenche la récupération des données
+    //this.props.getTransactions();
+  }
+
   render() {
     return (
       <div>

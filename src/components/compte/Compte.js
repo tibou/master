@@ -10,10 +10,16 @@ class Compte extends Component {
     super(props);
   }
 
+  // Cette méthode est exécutée juste après le chargement du composant
+  componentDidMount() {
+    // On déclenche la récupération des données
+    //this.props.getComptes();
+  }
+
   render() {
     return (
       <div>
-        <h1 className="h2">Compte bancaire</h1>
+        <h1 className="h2">Comptes bancaires</h1>
       </div>
     );
   }
