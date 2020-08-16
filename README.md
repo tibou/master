@@ -30,10 +30,6 @@ Ouvrez dans le navigateur [http://localhost:3000](http://localhost:3000) pour ac
 
 A chaque changement que vous faites, la page est rechargée automatiquement.<br />
 
-NB: Veuillez noter qu'en local, l'authentification ne fonctionnera pas à moins que
-vous modifiez les paramètres dévéloppeurs de Gmail et Facebook en les remplaçant par
-les votres dans le fichier `src/welcome/Welcome.js` .
-
 ### `yarn test`
 
 La commande `yarn test` lance les différents tests unitaires et d'intégrations.<br />

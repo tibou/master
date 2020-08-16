@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar,
   faChalkboard,
   faArchive,
-  faBox
+  faBox,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./Home.css";
@@ -18,7 +20,8 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      whatRender: 0
+      whatRender: 0,
+      redirect: false
     };
   }
 
@@ -26,11 +29,20 @@ class Home extends Component {
     this.setState({ whatRender: v });
   };
 
+  logout = () => {
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("type");
+    this.setState({ redirect: true });
+  };
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={"/"} />;
+    }
     return (
       <div>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-          <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">
+          <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
             Portail OBANSSI [ Test ANSSI ]
           </a>
           <button
@@ -52,8 +64,8 @@ class Home extends Component {
           />
           <ul className="navbar-nav px-3">
             <li className="nav-item text-nowrap">
-              <a className="nav-link" href="#">
-                Se déconnecter
+              <a className="nav-link" href="#" onClick={this.logout}>
+                <FontAwesomeIcon icon={faSignOutAlt} /> &nbsp;Déconnexion
               </a>
             </li>
           </ul>

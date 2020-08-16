@@ -18,24 +18,23 @@ class Welcome extends Component {
       return <Redirect to={"/home"} />;
     }
 
-    const signed = response => {
+    const signed = (response, type) => {
       sessionStorage.setItem("user", JSON.stringify(response));
+      sessionStorage.setItem("type", type);
       this.setState({ redirect: true });
     };
 
     const responseFacebook = response => {
-      console.log(response);
-      signed(response);
+      signed(response, "facebook");
     };
 
-    const componentClicked = response => {
-      console.log(response);
-    };
+    const componentClicked = response => {};
 
     const responseGoogle = response => {
-      console.log(response);
-      signed(response);
+      signed(response, "gmail");
     };
+
+    const responseGoogleF = response => {};
 
     return (
       <div className="container page-welcome">
@@ -70,7 +69,7 @@ class Welcome extends Component {
                         </button>
                       )}
                       onSuccess={responseGoogle}
-                      onFailure={responseGoogle}
+                      onFailure={responseGoogleF}
                       cookiePolicy={"single_host_origin"}
                     />
                   </div>
