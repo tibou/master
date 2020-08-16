@@ -1,5 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-social/bootstrap-social.css";
+
 import "./App.css";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

@@ -38,25 +38,59 @@ class Welcome extends Component {
     };
 
     return (
-      <div className="welcome">
-        <div className="medium-12 columns">
-          <GoogleLogin
-            clientId="271136507958-arm623if8vrq6h1d0ihelthslcuqb274.apps.googleusercontent.com"
-            buttonText="Connectez-vous avec Gmail"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
-          <br />
-          <br />
-          <FacebookLogin
-            appId="729314794577517"
-            autoLoad={true}
-            fields="name,email,picture"
-            onClick={componentClicked}
-            callback={responseFacebook}
-            textButton="Connectez-vous avec Facebook"
-          />
+      <div className="container page-welcome">
+        <div className="row  justify-content-center">
+          <div className="col-6 align-self-center">
+            <div className="row ">
+              <div className="text-welcome1 col-12">
+                Plateforme Web OBANSSI, client Open Banking WS02
+              </div>
+
+              <br />
+              <br />
+              <div className="welcome col-12">
+                <div className="row">
+                  <div className="col-md-12 col-sm-12">
+                    <br />
+                    <br />
+                    <h2>Connexion</h2>
+                    <br />
+                    <br />
+                  </div>
+                  <div className="col-md-12 col-sm-12">
+                    <GoogleLogin
+                      clientId="271136507958-arm623if8vrq6h1d0ihelthslcuqb274.apps.googleusercontent.com"
+                      render={renderProps => (
+                        <button
+                          onClick={renderProps.onClick}
+                          disabled={renderProps.disabled}
+                          className="loginBtn loginBtn--google"
+                        >
+                          Connectez-vous avec Gmail
+                        </button>
+                      )}
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </div>
+                  <div className="col-md-12 col-sm-12">
+                    <br />
+                    <br />
+                    <FacebookLogin
+                      appId="729314794577517"
+                      autoLoad={true}
+                      fields="name,email,picture"
+                      onClick={componentClicked}
+                      callback={responseFacebook}
+                      textButton="Connectez-vous avec Facebook"
+                      cssClass="loginBtn loginBtn--facebook"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

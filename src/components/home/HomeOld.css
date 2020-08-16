@@ -1,0 +1,38 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.home-footer {
+  height: 100px;
+}
+
+.home-main {
+  flex: auto;
+  flex-grow: 1;
+}
+
+.Footer-bande {
+  height: 8px;
+}
+
+.Footer-vert {
+  color: #006828;
+  background-color: #006828;
+}
+
+.Footer-jaune {
+  background-color: #ffbe00;
+}
+
+.Footer-rouge {
+  background-color: #eb0000;
+}
+
+.Footer-content {
+  background-color: #272c30;
+  color: whitesmoke;
+  text-align: center;
+  height: 92px;
+}
