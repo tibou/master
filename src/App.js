@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Welcome from "./components/welcome/Welcome";
 import Home from "./components/home/Home";
+import Compte from "./components/compte/Compte";
 
 import store from "./store";
 
@@ -21,6 +22,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Welcome} />
               <Route exact path="/home" component={Home} />
+              <Route exact path="/compte" component={Compte} />
             </Switch>
           </div>
         </div>

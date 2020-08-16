@@ -155,3 +155,8 @@ body {
   text-align: center;
   height: 92px;
 }
+
+.home-content {
+  height: auto;
+  min-height: 80vh;
+}
