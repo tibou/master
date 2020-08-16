@@ -9,6 +9,7 @@ import {
 
 // Cette action permet de créer un compte sur le serveur
 export const addTransaction = (transaction, history) => async dispatch => {
+  const res = null;
   try {
     dispatch([
       {
@@ -31,6 +32,7 @@ export const addTransaction = (transaction, history) => async dispatch => {
 
 // Cette action permet de récupérer tous les comptes de l'utilisateur du serveur
 export const getTransactions = () => async dispatch => {
+  const res = null;
   // On met à jour le state pour permettre l'affichage des données
   dispatch({
     type: GET_TRANSACTIONS,
@@ -40,6 +42,7 @@ export const getTransactions = () => async dispatch => {
 
 // Cette action permet de supprimer un compte  du serveur
 export const deleteTransaction = t_id => async dispatch => {
+  const res = null;
   try {
     // On demande la confirmation avant suppression
     if (
@@ -70,6 +73,7 @@ export const deleteTransaction = t_id => async dispatch => {
 
 // // Cette action permet de récupérer un compte
 export const getTransaction = (t_id, history) => async dispatch => {
+  const res = null;
   try {
     // On lance la mise à jour du state
     dispatch({

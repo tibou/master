@@ -9,6 +9,7 @@ import {
 
 // Cette action permet de créer un compte sur le serveur
 export const addCompte = (compte, history) => async dispatch => {
+  const res = null;
   try {
     dispatch([
       {
@@ -31,6 +32,7 @@ export const addCompte = (compte, history) => async dispatch => {
 
 // Cette action permet de récupérer tous les comptes de l'utilisateur du serveur
 export const getComptes = () => async dispatch => {
+  const res = null;
   // On met à jour le state pour permettre l'affichage des données
   dispatch({
     type: GET_COMPTES,
@@ -40,6 +42,7 @@ export const getComptes = () => async dispatch => {
 
 // Cette action permet de supprimer un compte  du serveur
 export const deleteCompte = compte_id => async dispatch => {
+  const res = null;
   try {
     // On demande la confirmation avant suppression
     if (
@@ -70,6 +73,7 @@ export const deleteCompte = compte_id => async dispatch => {
 
 // // Cette action permet de récupérer un compte
 export const getCompte = (compte_id, history) => async dispatch => {
+  const res = null;
   try {
     // On lance la mise à jour du state
     dispatch({
