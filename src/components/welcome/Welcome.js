@@ -25,7 +25,9 @@ class Welcome extends Component {
     };
 
     const responseFacebook = response => {
-      signed(response, "facebook");
+      if (!(response.status === "unknown")) {
+        signed(response, "facebook");
+      }
     };
 
     const componentClicked = response => {};

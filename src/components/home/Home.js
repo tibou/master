@@ -43,7 +43,7 @@ class Home extends Component {
       <div>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
           <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
-            Portail OBANSSI [ Test ANSSI ]
+            Portail OBANSSI
           </a>
           <button
             className="navbar-toggler position-absolute d-md-none collapsed"
