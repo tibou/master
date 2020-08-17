@@ -11,7 +11,8 @@ import {
 
 import {
   getTransactions,
-  getTransaction
+  getTransaction,
+  deleteTransaction
 } from "../../actions/transactionActions";
 
 class Transaction extends Component {
@@ -24,6 +25,10 @@ class Transaction extends Component {
     // On déclenche la récupération des données
     this.props.getTransactions();
   }
+
+  delete = id => {
+    this.props.deleteTransaction(id);
+  };
 
   render() {
     const { transactions } = this.props.transaction;
@@ -43,6 +48,7 @@ class Transaction extends Component {
           <table className="table table-striped table-sm">
             <thead>
               <tr>
+                <th>No</th>
                 <th>Type</th>
                 <th>Source</th>
                 <th>Destination</th>
@@ -74,6 +80,7 @@ class Transaction extends Component {
 
                 return (
                   <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{value.type}</td>
                     <td>{value.source}</td>
                     <td>{value.destination}</td>
@@ -90,6 +97,7 @@ class Transaction extends Component {
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-secondary"
+                        onClick={() => this.delete(value.id)}
                       >
                         <FontAwesomeIcon icon={faMinusCircle} color={"red"} />
                       </button>
@@ -108,13 +116,16 @@ class Transaction extends Component {
 Transaction.propType = {
   transaction: PropTypes.object.isRequired,
   getTransactions: PropTypes.func.isRequired,
-  getTransaction: PropTypes.func.isRequired
+  getTransaction: PropTypes.func.isRequired,
+  deleteTransaction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   transaction: state.transaction
 });
 
-export default connect(mapStateToProps, { getTransactions, getTransaction })(
-  Transaction
-);
+export default connect(mapStateToProps, {
+  getTransactions,
+  getTransaction,
+  deleteTransaction
+})(Transaction);

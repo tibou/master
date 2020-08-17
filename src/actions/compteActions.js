@@ -53,6 +53,7 @@ export const getComptes = () => async dispatch => {
   //On définit un dummy data
   const data = [
     {
+      id: 1,
       intitule: "Tiburce SOTOHOU",
       nom: "SOTOHOU",
       prenom: "Tiburce",
@@ -62,6 +63,7 @@ export const getComptes = () => async dispatch => {
       solde: 150000
     },
     {
+      id: 2,
       intitule: "Tiburce SOTOHOU",
       nom: "SOTOHOU",
       prenom: "Tiburce",
@@ -71,6 +73,7 @@ export const getComptes = () => async dispatch => {
       solde: 250000
     },
     {
+      id: 3,
       intitule: "Tiburce SOTOHOU",
       nom: "SOTOHOU",
       prenom: "Tiburce",
@@ -97,9 +100,10 @@ export const deleteCompte = compte_id => async dispatch => {
         `Vous supprimez le compte ${compte_id},  Cette action est irréversible`
       )
     ) {
+      /*
       const response = await fetch(`${API_BASE_URL}/${compte_id}`, {
         method: "DELETE"
-      });
+      }); */
       // On lance la mise à jour du state
       dispatch([
         {

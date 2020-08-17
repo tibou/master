@@ -51,6 +51,7 @@ export const getTransactions = () => async dispatch => {
   //On définit un dummy data
   const data = [
     {
+      id: 1,
       type: "DEBIT",
       source: "08964452272281",
       destination: "Lui-même",
@@ -58,6 +59,7 @@ export const getTransactions = () => async dispatch => {
       date: new Date()
     },
     {
+      id: 2,
       type: "CREDIT",
       source: "Lui-même",
       destination: "08964452272281",
@@ -65,6 +67,7 @@ export const getTransactions = () => async dispatch => {
       date: new Date()
     },
     {
+      id: 3,
       type: "TRANSFERT",
       source: "08964452272281",
       destination: "05674509876252",
@@ -89,18 +92,16 @@ export const deleteTransaction = t_id => async dispatch => {
         `Vous supprimez la transaction ${t_id},  Cette action est irréversible`
       )
     ) {
+      /*
       const response = await fetch(`${API_BASE_URL}/${t_id}`, {
         method: "DELETE"
       });
+      */
       // On lance la mise à jour du state
       dispatch([
         {
           type: DELETE_TRANSACTION,
           payload: t_id
-        },
-        {
-          type: GET_ERRORS,
-          payload: res.data
         }
       ]);
     }

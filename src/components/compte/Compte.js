@@ -9,7 +9,11 @@ import {
   faMinusCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-import { getComptes, getCompte } from "../../actions/compteActions";
+import {
+  getComptes,
+  getCompte,
+  deleteCompte
+} from "../../actions/compteActions";
 
 class Compte extends Component {
   constructor(props) {
@@ -21,6 +25,11 @@ class Compte extends Component {
     // On déclenche la récupération des données
     this.props.getComptes();
   }
+
+  delete = id => {
+    //console.log(id);
+    this.props.deleteCompte(id);
+  };
 
   render() {
     const { comptes } = this.props.compte;
@@ -40,6 +49,7 @@ class Compte extends Component {
           <table className="table table-striped table-sm">
             <thead>
               <tr>
+                <th>No</th>
                 <th>Intitulé</th>
                 <th>Nom</th>
                 <th>Prénom</th>
@@ -54,6 +64,7 @@ class Compte extends Component {
               {comptes.map((value, index) => {
                 return (
                   <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{value.intitule}</td>
                     <td>{value.nom}</td>
                     <td>{value.prenom}</td>
@@ -72,6 +83,7 @@ class Compte extends Component {
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-secondary"
+                        onClick={() => this.delete(value.id)}
                       >
                         <FontAwesomeIcon icon={faMinusCircle} color={"red"} />
                       </button>
@@ -90,11 +102,16 @@ class Compte extends Component {
 Compte.propType = {
   compte: PropTypes.object.isRequired,
   getComptes: PropTypes.func.isRequired,
-  getCompte: PropTypes.func.isRequired
+  getCompte: PropTypes.func.isRequired,
+  deleteCompte: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   compte: state.compte
 });
 
-export default connect(mapStateToProps, { getComptes, getCompte })(Compte);
+export default connect(mapStateToProps, {
+  getComptes,
+  getCompte,
+  deleteCompte
+})(Compte);
