@@ -45,13 +45,46 @@ export const addCompte = (compte, history) => async dispatch => {
 
 // Cette action permet de récupérer tous les comptes de l'utilisateur du serveur
 export const getComptes = () => async dispatch => {
-  //On récupère à nouveau toute la liste
+  //On récupère toute la liste
+  /*
   const response = await fetch(API_BASE_URL);
-  const res = await response.json();
+  const res = await response.json(); */
+
+  //On définit un dummy data
+  const data = [
+    {
+      intitule: "Tiburce SOTOHOU",
+      nom: "SOTOHOU",
+      prenom: "Tiburce",
+      rib: "08964452272281",
+      banque: "BOA",
+      telephone: "0022966345569",
+      solde: 150000
+    },
+    {
+      intitule: "Tiburce SOTOHOU",
+      nom: "SOTOHOU",
+      prenom: "Tiburce",
+      rib: "04567756438793",
+      banque: "UBA",
+      telephone: "0022966345569",
+      solde: 250000
+    },
+    {
+      intitule: "Tiburce SOTOHOU",
+      nom: "SOTOHOU",
+      prenom: "Tiburce",
+      rib: "05674509876252",
+      banque: "ECOBANK",
+      telephone: "0022996452318",
+      solde: 300000
+    }
+  ];
+
   // On met à jour le state pour permettre l'affichage des données
   dispatch({
     type: GET_COMPTES,
-    payload: res.data
+    payload: data
   });
 };
 

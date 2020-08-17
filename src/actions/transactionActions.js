@@ -46,12 +46,36 @@ export const addTransaction = (transaction, history) => async dispatch => {
 // Cette action permet de récupérer tous les comptes de l'utilisateur du serveur
 export const getTransactions = () => async dispatch => {
   //On récupère à nouveau toute la liste
-  const response = await fetch(API_BASE_URL);
-  const res = await response.json();
+  /* const response = await fetch(API_BASE_URL);
+  const res = await response.json(); */
+  //On définit un dummy data
+  const data = [
+    {
+      type: "DEBIT",
+      source: "08964452272281",
+      destination: "Lui-même",
+      montant: 100000,
+      date: new Date()
+    },
+    {
+      type: "CREDIT",
+      source: "Lui-même",
+      destination: "08964452272281",
+      montant: 200000,
+      date: new Date()
+    },
+    {
+      type: "TRANSFERT",
+      source: "08964452272281",
+      destination: "05674509876252",
+      montant: 50000,
+      date: new Date()
+    }
+  ];
   // On met à jour le state pour permettre l'affichage des données
   dispatch({
     type: GET_TRANSACTIONS,
-    payload: res.data
+    payload: data
   });
 };
 

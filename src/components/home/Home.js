@@ -118,8 +118,8 @@ class Home extends Component {
               role="main"
               className="col-md-9 ml-sm-auto col-lg-10 px-md-4 home-content"
             >
-              <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                {this.state.whatRender === 0 ? (
+              {this.state.whatRender === 0 ? (
+                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <React.Fragment>
                     <h1 className="h2">Tableau de bord</h1>
                     <div className="btn-toolbar mb-2 mb-md-0">
@@ -132,11 +132,11 @@ class Home extends Component {
                       </button>
                     </div>
                   </React.Fragment>
-                ) : null}
+                </div>
+              ) : null}
 
-                {this.state.whatRender === 1 ? <Compte /> : null}
-                {this.state.whatRender === 2 ? <Transaction /> : null}
-              </div>
+              {this.state.whatRender === 1 ? <Compte /> : null}
+              {this.state.whatRender === 2 ? <Transaction /> : null}
             </main>
           </div>
         </div>
