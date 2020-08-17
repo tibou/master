@@ -153,10 +153,6 @@ body {
   background-color: #272c30;
   color: whitesmoke;
   text-align: center;
-  height: 130px;
-}
-
-.home-content {
-  height: auto;
-  min-height: 80vh;
+  height: 40px;
+  padding-top: 10px;
 }

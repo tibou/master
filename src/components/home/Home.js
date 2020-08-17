@@ -114,10 +114,7 @@ class Home extends Component {
               </div>
             </nav>
 
-            <main
-              role="main"
-              className="col-md-9 ml-sm-auto col-lg-10 px-md-4 home-content"
-            >
+            <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
               {this.state.whatRender === 0 ? (
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <React.Fragment>
@@ -138,9 +135,11 @@ class Home extends Component {
               {this.state.whatRender === 1 ? <Compte /> : null}
               {this.state.whatRender === 2 ? <Transaction /> : null}
             </main>
+            <div className="fixed-bottom">
+              <Footer />
+            </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

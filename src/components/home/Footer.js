@@ -10,9 +10,10 @@ const Footer = props => {
         <div className="col-4 Footer-jaune"></div>
         <div className="col-4 Footer-rouge"></div>
       </div>
-      <div className="Footer-content">
-        <br />
-        Copyright © OBANSSI 2020. Tous droits réservés
+      <div className="row Footer-content">
+        <div className="col-12">
+          Copyright © OBANSSI 2020. Tous droits réservés
+        </div>
       </div>
     </React.Fragment>
   );
