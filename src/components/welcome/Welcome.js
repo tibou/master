@@ -41,9 +41,9 @@ class Welcome extends Component {
     return (
       <div className="container page-welcome">
         <div className="row  justify-content-center">
-          <div className="col-6 align-self-center">
+          <div className="col-md-6 col-sm-10 col-xs-10 col-lg-6 align-self-center">
             <div className="row ">
-              <div className="text-welcome1 col-12">
+              <div className="text-welcome col-12">
                 Plateforme Web OBANSSI, client Open Banking WS02
               </div>
 
