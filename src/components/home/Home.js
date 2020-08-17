@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +16,16 @@ import "./Home.css";
 import Footer from "./Footer";
 import Compte from "../compte/Compte";
 import Transaction from "../transaction/Transaction";
+import {
+  getComptes,
+  getCompte,
+  deleteCompte
+} from "../../actions/compteActions";
+import {
+  getTransactions,
+  getTransaction,
+  deleteTransaction
+} from "../../actions/transactionActions";
 
 class Home extends Component {
   constructor(props) {
@@ -23,6 +35,12 @@ class Home extends Component {
       whatRender: 0,
       redirect: false
     };
+  }
+
+  // Cette méthode est exécutée juste après le chargement du composant
+  componentDidMount() {
+    this.props.getComptes();
+    this.props.getTransactions();
   }
 
   toggleShowContent = v => {
@@ -39,6 +57,9 @@ class Home extends Component {
     if (this.state.redirect) {
       return <Redirect to={"/"} />;
     }
+
+    const { comptes } = this.props.compte;
+    const { transactions } = this.props.transaction;
     return (
       <div>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -132,8 +153,15 @@ class Home extends Component {
                 </div>
               ) : null}
 
-              {this.state.whatRender === 1 ? <Compte /> : null}
-              {this.state.whatRender === 2 ? <Transaction /> : null}
+              {this.state.whatRender === 1 ? (
+                <Compte comptes={comptes} delete={this.props.deleteCompte} />
+              ) : null}
+              {this.state.whatRender === 2 ? (
+                <Transaction
+                  transactions={transactions}
+                  delete={this.props.deleteTransaction}
+                />
+              ) : null}
             </main>
             <div className="fixed-bottom">
               <Footer />
@@ -145,4 +173,27 @@ class Home extends Component {
   }
 }
 
-export default Home;
+Home.propType = {
+  compte: PropTypes.object.isRequired,
+  getComptes: PropTypes.func.isRequired,
+  getCompte: PropTypes.func.isRequired,
+  deleteCompte: PropTypes.func.isRequired,
+  transaction: PropTypes.object.isRequired,
+  getTransactions: PropTypes.func.isRequired,
+  getTransaction: PropTypes.func.isRequired,
+  deleteTransaction: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  compte: state.compte,
+  transaction: state.transaction
+});
+
+export default connect(mapStateToProps, {
+  getComptes,
+  getCompte,
+  deleteCompte,
+  getTransactions,
+  getTransaction,
+  deleteTransaction
+})(Home);
