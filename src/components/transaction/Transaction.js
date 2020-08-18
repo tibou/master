@@ -127,11 +127,7 @@ function Transaction(props) {
 
             <Form.Group controlId="formMontant">
               <Form.Label>Montant</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Montant"
-                onKeyPress="return isNumber(event)"
-              />
+              <Form.Control type="text" placeholder="Montant" />
             </Form.Group>
           </Form>
         </Modal.Body>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,13 +28,35 @@ import {
   deleteTransaction
 } from "../../actions/transactionActions";
 
+let menuItems = [
+  {
+    text: "Tableau de Bord",
+    showContent: 0,
+    ic: faChalkboard,
+    clicked: true
+  },
+  {
+    text: "Comptes Bancaires",
+    showContent: 1,
+    ic: faBox,
+    clicked: false
+  },
+  {
+    text: "Transactions",
+    showContent: 2,
+    ic: faArchive,
+    clicked: false
+  }
+];
+
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       whatRender: 0,
-      redirect: false
+      redirect: false,
+      menuItems: menuItems
     };
   }
 
@@ -53,6 +76,56 @@ class Home extends Component {
     this.setState({ redirect: true });
   };
 
+  handleOnClick = e => {
+    const { menuItems } = this.state;
+
+    const updatedMenu = menuItems.map(item => {
+      if (item.showContent == e.target.parentElement.value) {
+        return {
+          ...item,
+          clicked: true
+        };
+      } else {
+        return {
+          ...item,
+          clicked: false
+        };
+      }
+    });
+
+    this.toggleShowContent(e.target.parentElement.value);
+
+    this.setState({
+      menuItems: updatedMenu
+    });
+  };
+
+  createMenuItems = () => {
+    const { menuItems } = this.state;
+
+    return menuItems.map(item => {
+      return (
+        <li
+          key={item.showContent}
+          className="nav-item"
+          value={item.showContent}
+        >
+          <a
+            className={classnames("nav-link", {
+              active: item.clicked
+            })}
+            href="#"
+            onClick={this.handleOnClick}
+          >
+            <FontAwesomeIcon icon={item.ic} />
+            &nbsp; {item.text}
+            <span className="sr-only">(current)</span>
+          </a>
+        </li>
+      );
+    });
+  };
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={"/"} />;
@@ -60,6 +133,7 @@ class Home extends Component {
 
     const { comptes } = this.props.compte;
     const { transactions } = this.props.transaction;
+
     return (
       <div>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -99,39 +173,7 @@ class Home extends Component {
               className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
             >
               <div className="sidebar-sticky pt-3">
-                <ul className="nav flex-column">
-                  <li className="nav-item">
-                    <a
-                      className="nav-link active"
-                      href="#"
-                      onClick={() => this.toggleShowContent(0)}
-                    >
-                      <FontAwesomeIcon icon={faChalkboard} />
-                      &nbsp; Tableau de Bord{" "}
-                      <span className="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      onClick={() => this.toggleShowContent(1)}
-                    >
-                      <FontAwesomeIcon icon={faBox} />
-                      &nbsp; Compte Bancaire
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      onClick={() => this.toggleShowContent(2)}
-                    >
-                      <FontAwesomeIcon icon={faArchive} />
-                      &nbsp; Transactions
-                    </a>
-                  </li>
-                </ul>
+                <ul className="nav flex-column">{this.createMenuItems()}</ul>
               </div>
             </nav>
 
